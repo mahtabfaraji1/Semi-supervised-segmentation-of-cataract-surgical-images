@@ -14,19 +14,23 @@ from networks.net_factory import net_factory
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--image_dir', type=str,
-                    default='/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/fold_0/test/images', help='Name of Experiment')
+                    default='/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/fold_0/test/images',
+                    help='Name of Experiment')
 parser.add_argument('--label_dir', type=str,
-                    default='/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/fold_0/test/masks', help='experiment_name')
+                    default='/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/fold_0/test/masks',
+                    help='experiment_name')
 
 parser.add_argument('--exp', type=str,
-                    default='/Users/mahtab/Downloads/SSL4MIS/segmentation_env/model/Experiment_labeled_900_900_labeled/', help='experiment_name')
+                    default='/Users/mahtab/Downloads/SSL4MIS/segmentation_env/model/Experiment_labeled_900_900_labeled/',
+                    help='experiment_name')
 parser.add_argument('--model', type=str,
                     default='unet', help='model_name')
-parser.add_argument('--num_classes', type=int,  default=15,
+parser.add_argument('--num_classes', type=int, default=15,
                     help='output channel of network')
 parser.add_argument('--labeled_num', type=int, default=409,
                     help='labeled data')
-parser.add_argument('--output_dir', type=str, default='/Users/mahtab/Downloads/SSL4MIS/segmentation_env/model/Experiment_labeled_900_900_labeled/output',
+parser.add_argument('--output_dir', type=str,
+                    default='/Users/mahtab/Downloads/SSL4MIS/segmentation_env/model/Experiment_labeled_900_900_labeled/output',
                     help='Directory to save output predictions')
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -36,9 +40,9 @@ def calculate_metric_percase(pred, gt):
     pred[pred > 0] = 1
     gt[gt > 0] = 1
     dice = metric.binary.dc(pred, gt)
-    asd = metric.binary.asd(pred, gt)
-    hd95 = metric.binary.hd95(pred, gt)
-    return dice, hd95, asd
+    # asd = metric.binary.asd(pred, gt)
+    # hd95 = metric.binary.hd95(pred, gt)
+    return dice
 
 
 def test_single_image(image_path, label_path, net, output_dir, FLAGS):
@@ -100,7 +104,7 @@ def Inference(FLAGS):
     image_dir = FLAGS.image_dir
     label_dir = FLAGS.label_dir
     output_dir = FLAGS.output_dir
-
+    metric_dict = {key: [] for key in range(1, FLAGS.num_classes + 1)}
     # Create output directory if it doesn't exist
     if os.path.exists(output_dir):
         shutil.rmtree(output_dir)
@@ -134,17 +138,25 @@ def Inference(FLAGS):
             continue
 
         # Process the single image and compute metrics
-        first_metric, second_metric, third_metric = test_single_image(image_path, label_path, net, output_dir, FLAGS)
-        first_total += np.asarray(first_metric)
-        second_total += np.asarray(second_metric)
-        third_total += np.asarray(third_metric)
+        metrics_per_class = test_single_image(image_path, label_path, net, output_dir, FLAGS)
 
-    avg_metric = [first_total / len(image_files), second_total / len(image_files), third_total / len(image_files)]
-    return avg_metric
+        for key, value in metrics_per_class.items():
+            metric_dict[key].append(value)
+            # print(key, value)
+
+        # first_total += np.asarray(first_metric)
+        # second_total += np.asarray(second_metric)
+        # third_total += np.asarray(third_metric)
+
+    class_names = {1: "Cornea", 2: "Pupil", 3: "Lens", 4: "instruments"}
+    for key, value in metric_dict.items():
+        if key < 5:
+            print(f" Dice_score of {class_names[key]} : {np.mean(value)}")
+    return metric_dict
 
 
 if __name__ == '__main__':
     FLAGS = parser.parse_args()
     metrics = Inference(FLAGS)
-    print(metrics)
-    print((metrics[0] + metrics[1] + metrics[2]) / 3)
+    # print(metrics)
+    # print((metrics[0] + metrics[1] + metrics[2]) / 3)
