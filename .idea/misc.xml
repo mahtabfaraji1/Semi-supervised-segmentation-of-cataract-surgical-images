@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Black">
+<<<<<<< HEAD
     <option name="sdkName" value="segmentation_env_SSL4MIs" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="segmentation_env_SSL4MIs" project-jdk-type="Python SDK" />
+=======
+    <option name="sdkName" value="$USER_HOME$/apps/anaconda3/envs/glaucoma_bias" />
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="$USER_HOME$/apps/anaconda3/envs/glaucoma_bias" project-jdk-type="Python SDK" />
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
 </project>

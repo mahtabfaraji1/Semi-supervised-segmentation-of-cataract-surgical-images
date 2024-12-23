@@ -3,10 +3,14 @@ from torch.nn import functional as F
 import numpy as np
 import torch.nn as nn
 from torch.autograd import Variable
+<<<<<<< HEAD
 import os
 import cv2
 import numpy as np
 from collections import Counter
+=======
+
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
 
 def dice_loss(score, target):
     target = target.float()
@@ -220,6 +224,7 @@ def compute_kl_loss(p, q):
 
     loss = (p_loss + q_loss) / 2
     return loss
+<<<<<<< HEAD
 
 def calculate_focal_loss_alpha(directory_path):
     class_counts = count_classes_in_masks(directory_path)
@@ -278,3 +283,5 @@ def count_classes_in_masks(directory_path):
                 instance_counts[class_label] = instance_counts[class_label] +1
 
     return instance_counts
+=======
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b

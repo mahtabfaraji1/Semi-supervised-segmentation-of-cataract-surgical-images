@@ -17,11 +17,18 @@ from augmentations.ctaugment import OPS
 import matplotlib.pyplot as plt
 from PIL import Image
 
+<<<<<<< HEAD
 import os
 from torch.utils.data import Dataset
 from PIL import Image
 
 
+=======
+
+import os
+from torch.utils.data import Dataset
+from PIL import Image
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
 # class BaseDataSets(Dataset):
 #     def __init__(
 #         self,
@@ -76,7 +83,10 @@ from PIL import Image
 #         sample["idx"] = idx
 #         return sample
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
 class BaseDataSets(Dataset):
     def __init__(
             self,
@@ -118,8 +128,13 @@ class BaseDataSets(Dataset):
         label_path = self.label_paths[idx]
 
         # Load the image and label
+<<<<<<< HEAD
         image = cv2.imread(image_path)
         label = cv2.imread(label_path, cv2.IMREAD_GRAYSCALE)
+=======
+        image = Image.open(image_path).convert("RGB")
+        label = Image.open(label_path).convert("L")  # Convert label to grayscale
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
 
         # Convert images and labels to numpy arrays
         image = np.array(image)
@@ -136,6 +151,7 @@ class BaseDataSets(Dataset):
         sample["idx"] = idx
         return sample
 
+<<<<<<< HEAD
     def get_image_names(self, idxs):
         """Return the image file names for the given indices."""
         return [os.path.basename(self.image_paths[idx]) for idx in idxs]
@@ -252,6 +268,27 @@ def random_rotate(image, label=None):
     if label is not None:
         label = ndimage.rotate(label, angle, order=0, reshape=False)
 
+=======
+
+
+def random_rot_flip(image, label=None):
+    k = np.random.randint(0, 4)
+    image = np.rot90(image, k)
+    axis = np.random.randint(0, 2)
+    image = np.flip(image, axis=axis).copy()
+    if label is not None:
+        label = np.rot90(label, k)
+        label = np.flip(label, axis=axis).copy()
+        return image, label
+    else:
+        return image
+
+
+def random_rotate(image, label):
+    angle = np.random.randint(-20, 20)
+    image = ndimage.rotate(image, angle, order=0, reshape=False)
+    label = ndimage.rotate(label, angle, order=0, reshape=False)
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
     return image, label
 
 
@@ -303,10 +340,15 @@ class CTATransform(object):
         return pil_img
 
     def resize(self, image):
+<<<<<<< HEAD
         x, y, _ = image.shape
         return zoom(image, (self.output_size[0] / x, self.output_size[1] / y, 1), order=0)
 
         # return zoom(image, (self.output_size[0] / x, self.output_size[1] / y), order=0)
+=======
+        x, y = image.shape
+        return zoom(image, (self.output_size[0] / x, self.output_size[1] / y), order=0)
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
 
 
 class RandomGenerator(object):
@@ -314,6 +356,7 @@ class RandomGenerator(object):
         self.output_size = output_size
 
     def __call__(self, sample):
+<<<<<<< HEAD
         image, label = sample["image"], sample.get("label", None)  # Ensure label can be None
 
         if random.random() > 0.5:
@@ -337,10 +380,27 @@ class RandomGenerator(object):
         if label is not None:
             label = torch.from_numpy(label.astype(np.uint8))
 
+=======
+        image, label = sample["image"], sample["label"]
+        # ind = random.randrange(0, img.shape[0])
+        # image = img[ind, ...]
+        # label = lab[ind, ...]
+        if random.random() > 0.5:
+            image, label = random_rot_flip(image, label)
+        elif random.random() > 0.5:
+            image, label = random_rotate(image, label)
+        image = color.rgb2gray(image)
+        x, y = image.shape
+        image = zoom(image, (self.output_size[0] / x, self.output_size[1] / y), order=0)
+        label = zoom(label, (self.output_size[0] / x, self.output_size[1] / y), order=0)
+        image = torch.from_numpy(image.astype(np.float32)).unsqueeze(0)
+        label = torch.from_numpy(label.astype(np.uint8))
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
         sample = {"image": image, "label": label}
         return sample
 
 
+<<<<<<< HEAD
 # class RandomGenerator(object):
 #     def __init__(self, output_size):
 #         self.output_size = output_size
@@ -391,6 +451,8 @@ class RandomGenerator(object):
 #         return sample
 
 
+=======
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
 class WeakStrongAugment(object):
     """returns weakly and strongly augmented images
 
@@ -423,8 +485,13 @@ class WeakStrongAugment(object):
         return sample
 
     def resize(self, image):
+<<<<<<< HEAD
         x, y, _ = image.shape
         return zoom(image, (self.output_size[0] / x, self.output_size[1] / y, 1), order=0)
+=======
+        x, y = image.shape
+        return zoom(image, (self.output_size[0] / x, self.output_size[1] / y), order=0)
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
 
 
 class TwoStreamBatchSampler(Sampler):
@@ -450,9 +517,15 @@ class TwoStreamBatchSampler(Sampler):
         return (
             primary_batch + secondary_batch
             for (primary_batch, secondary_batch) in zip(
+<<<<<<< HEAD
             grouper(primary_iter, self.primary_batch_size),
             grouper(secondary_iter, self.secondary_batch_size),
         )
+=======
+                grouper(primary_iter, self.primary_batch_size),
+                grouper(secondary_iter, self.secondary_batch_size),
+            )
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
         )
 
     def __len__(self):

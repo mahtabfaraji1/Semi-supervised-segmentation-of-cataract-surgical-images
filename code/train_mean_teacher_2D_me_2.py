@@ -20,8 +20,13 @@ from val_2D import test_single_volume,test_single_image
 
 # Setting variables directly
 # root_path = '/home/mahtab/segmentation/SSL4MIS/segmentation_env/data/cataract1k'
+<<<<<<< HEAD
 root_path = '/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/cataract1k/labeled/all'
 exp = 'Experiment_labeled_all'
+=======
+root_path = '/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/fold_0'
+exp = 'Experiment_labeled_fold_0'
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
 model_name = 'unet'
 max_iterations = 1000
 batch_size = 24
@@ -29,9 +34,15 @@ deterministic = 1
 base_lr = 0.01
 patch_size = [256, 256]
 seed = 1337
+<<<<<<< HEAD
 num_classes = 5
 labeled_bs = 12
 labeled_num = 158
+=======
+num_classes = 15
+labeled_bs = 12
+labeled_num = 900
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
 ema_decay = 0.99
 consistency_type = "mse"
 consistency = 0.1
@@ -55,16 +66,20 @@ def train():
     global model_name, base_lr, num_classes, batch_size, max_iterations
     snapshot_path = f"../model/{exp}_{labeled_num}_labeled/{model_name}"
 
+<<<<<<< HEAD
     # Initialize file writers for labeled and unlabeled image names
     labeled_images_file = open(os.path.join(snapshot_path, 'labeled_images.txt'), 'w')
     unlabeled_images_file = open(os.path.join(snapshot_path, 'unlabeled_images.txt'), 'w')
 
+=======
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
     db_train = BaseDataSets(base_dir=root_path, split="train", num=None, transform=transforms.Compose([
         RandomGenerator(patch_size)
     ]))
     db_val = BaseDataSets(base_dir=root_path, split="val")
 
     total_images = len(db_train)
+<<<<<<< HEAD
 
     all_indices = list(range(total_images))
     random.shuffle(all_indices)  # Shuffle all indices
@@ -92,6 +107,10 @@ def train():
     unlabeled_images_file.close()
 
 
+=======
+    labeled_idxs = list(range(0, labeled_num))
+    unlabeled_idxs = list(range(labeled_num, total_images))
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
     batch_sampler = TwoStreamBatchSampler(
         labeled_idxs, unlabeled_idxs, batch_size, batch_size - labeled_bs)
 
@@ -99,7 +118,11 @@ def train():
                              num_workers=1, pin_memory=True, worker_init_fn=worker_init_fn)
 
     def create_model(ema=False):
+<<<<<<< HEAD
         model = net_factory(class_num=num_classes,net_type=model_name, in_chns=3, device=device)
+=======
+        model = net_factory(class_num=num_classes,net_type=model_name, in_chns=1, device=device)
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
         model.to(device)  # Move model to the correct device
         if ema:
             for param in model.parameters():
@@ -136,21 +159,27 @@ def train():
                 unlabeled_volume_batch) * 0.1, -0.2, 0.2)
             ema_inputs = unlabeled_volume_batch + noise
 
+<<<<<<< HEAD
             ema_inputs = ema_inputs.squeeze(1)
             ema_inputs = ema_inputs.permute(0, 3, 1, 2)
 
             volume_batch = volume_batch.squeeze(1)
             volume_batch = volume_batch.permute(0, 3, 1, 2)
 
+=======
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
             outputs = model(volume_batch)
             outputs_soft = torch.softmax(outputs, dim=1)
             with torch.no_grad():
                 ema_output = ema_model(ema_inputs)
                 ema_output_soft = torch.softmax(ema_output, dim=1)
 
+<<<<<<< HEAD
             # label_batch = torch.argmax(label_batch, dim=-1)
             # loss_ce = ce_loss(outputs[:labeled_bs], label_batch[:labeled_bs].long())
 
+=======
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
             loss_ce = ce_loss(outputs[:labeled_bs],
                               label_batch[:][:labeled_bs].long())
             loss_dice = dice_loss(
@@ -196,7 +225,11 @@ def train():
                 metric_list = 0.0
                 for i_batch, sampled_batch in enumerate(valloader):
                     metric_i = test_single_image(
+<<<<<<< HEAD
                         sampled_batch["image"], sampled_batch["label"], model, classes=num_classes,device=device)
+=======
+                        sampled_batch["image"], sampled_batch["label"], model, classes=num_classes)
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
                     # metric_i = test_single_volume(
                     #     sampled_batch["image"], sampled_batch["label"], model, classes=num_classes)
                     metric_list += np.array(metric_i)

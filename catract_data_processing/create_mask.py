@@ -5,7 +5,11 @@ import os
 from PIL import Image, ImageDraw
 from collections import namedtuple
 
+<<<<<<< HEAD
 data_folder = '/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/train_cases'
+=======
+data_folder = '/Users/mahtab/.synapseCache/data'
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
 folder = 'json'
 folder_masks_anatomy_inst = 'mask_anatomy_inst'
 
@@ -26,6 +30,10 @@ Label = namedtuple('Label', [
     'color',  # The color of this label
     'train_id'
 ])
+<<<<<<< HEAD
+=======
+
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
 instrument_names = ['Slit Knife', 'Gauge', 'Capsulorhexis Cystotome', 'Spatula', 'Phacoemulsification Tip',
                     'Irrigation-Aspiration', 'Lens Injector', 'Incision Knife', 'Katena Forceps',
                     'Capsulorhexis Forceps']
@@ -57,6 +65,7 @@ for p in range(len(case_list)):
 
         for i in range(len(jlist)):
             if jlist[i] != '.DS_Store':
+<<<<<<< HEAD
                 # data = json.load(read_file)
                 file_name= case_json_folder + '/' + jlist[i]
                 if jlist[i] != "SYNAPSE_METADATA_MANIFEST.tsv":
@@ -120,6 +129,64 @@ for p in range(len(case_list)):
                             draw1.polygon(ext, fill=4)
 
                     image_Mix.save(case_folder + '/' + folder_masks_anatomy_inst + '/' + name)
+=======
+                with open(case_json_folder + '/' + jlist[i], "r", encoding='latin1') as read_file:
+                    data = json.load(read_file)
+                    # print(data)
+                print("image_name",jlist[i])
+                name = jlist[i][:-5]
+                objects = data['objects']
+                image_Mix = Image.new(mode="L", size=(1024, 768), color=0)
+
+                draw1 = ImageDraw.Draw(image_Mix)
+
+                # First: Cornea
+                for j in range(len(objects)):
+                    title = objects[j]['classTitle']
+                    exterior = objects[j]['points']['exterior']
+                    ext = []
+                    for k in range(len(exterior)):
+                        ext.append(tuple(exterior[k]))
+
+                    if title == 'Cornea':
+                        draw1.polygon(ext, fill=1)
+
+                # Second: Pupil
+                for j in range(len(objects)):
+                    title = objects[j]['classTitle']
+                    exterior = objects[j]['points']['exterior']
+                    ext = []
+                    for k in range(len(exterior)):
+                        ext.append(tuple(exterior[k]))
+
+                    if title == 'Pupil':
+                        draw1.polygon(ext, fill=2)
+
+                        # Third: Lens
+                for j in range(len(objects)):
+                    title = objects[j]['classTitle']
+                    exterior = objects[j]['points']['exterior']
+                    ext = []
+                    for k in range(len(exterior)):
+                        ext.append(tuple(exterior[k]))
+
+                    if title == 'Lens':
+                        draw1.polygon(ext, fill=3)
+
+                        # Forth: Instruments
+                for j in range(len(objects)):
+                    title = objects[j]['classTitle']
+                    exterior = objects[j]['points']['exterior']
+                    ext = []
+                    for k in range(len(exterior)):
+                        ext.append(tuple(exterior[k]))
+
+                    if title in instrument_names:
+                        print(title)
+                        draw1.polygon(ext, fill=4)
+
+                image_Mix.save(case_folder + '/' + folder_masks_anatomy_inst + '/' + name)
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
 
     # # To test mask creation:
     # for i in range(len(jlist)):

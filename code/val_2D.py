@@ -25,11 +25,16 @@ def calculate_metric_percase(pred, gt):
     else:
         # If pred is all zeros, return zero for both metrics
         return 0, 0
+<<<<<<< HEAD
 def test_single_image(image, label, net, classes,device,patch_size = [256, 256]):
+=======
+def test_single_image(image, label, net, classes, patch_size=[256, 256],device = torch.device("cuda" if torch.cuda.is_available() else "cpu")):
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
     # if image.shape[1] == 3:
     #     image = rgb2gray(
     #         image.permute(1, 2, 0).cpu().numpy())
     #     image = torch.from_numpy(image).unsqueeze(0)  #
+<<<<<<< HEAD
     #patch_size = [256, 256]
     image, label = image.squeeze(0).cpu().detach().numpy(), label.squeeze(0).cpu().detach().numpy()
     # image = rgb2gray(image)
@@ -44,6 +49,18 @@ def test_single_image(image, label, net, classes,device,patch_size = [256, 256])
     net.eval()
 
 
+=======
+    image, label = image.squeeze(0).cpu().detach().numpy(), label.squeeze(0).cpu().detach().numpy()
+    image = rgb2gray(image)
+    x, y = image.shape[0], image.shape[1]
+    resized_image = zoom(image, (patch_size[0] / x, patch_size[1] / y), order=0)
+    # Prepare the image as input for the network
+    # input = torch.from_numpy(resized_image).unsqueeze(0).unsqueeze(0).float().cuda()
+    input = torch.from_numpy(resized_image).unsqueeze(0).unsqueeze(0).float().to(device)
+    # Set the model to evaluation mode
+    net.eval()
+
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
     # Run inference on the network
     with torch.no_grad():
         out = torch.argmax(torch.softmax(net(input), dim=1), dim=1).squeeze(0)
@@ -67,6 +84,7 @@ def test_single_image(image, label, net, classes,device,patch_size = [256, 256])
         # metric_list.append(calculate_metric_percase(binary_prediction, binary_label))
         # metric_list.append(calculate_metric_percase(prediction == i, label == i))
     return metric_list
+<<<<<<< HEAD
 def test_single_image_cadis(image, label, net, classes,device,patch_size = [256, 256]):
     # if image.shape[1] == 3:
     #     image = rgb2gray(
@@ -110,6 +128,9 @@ def test_single_image_cadis(image, label, net, classes,device,patch_size = [256,
         # metric_list.append(calculate_metric_percase(binary_prediction, binary_label))
         # metric_list.append(calculate_metric_percase(prediction == i, label == i))
     return metric_list
+=======
+
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
 def test_single_volume(image, label, net, classes, patch_size=[256, 256]):
     image, label = image.squeeze(0).cpu().detach(
     ).numpy(), label.squeeze(0).cpu().detach().numpy()

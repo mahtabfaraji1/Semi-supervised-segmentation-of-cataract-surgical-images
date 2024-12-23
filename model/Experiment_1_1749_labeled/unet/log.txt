@@ -1,0 +1,12 @@
+[17:32:29.976] Experiment Settings: Experiment_1, Model: unet
+[17:34:58.705] Experiment Settings: Experiment_1, Model: unet
+[17:35:51.501] Experiment Settings: Experiment_1, Model: unet
+[17:36:37.960] Experiment Settings: Experiment_1, Model: unet
+[17:38:14.517] Experiment Settings: Experiment_1, Model: unet
+[17:39:45.867] 145 iterations per epoch
+[17:43:23.386] Experiment Settings: Experiment_1, Model: unet
+[17:43:56.820] 145 iterations per epoch
+[17:44:39.873] Experiment Settings: Experiment_1, Model: unet
+[17:44:49.009] 145 iterations per epoch
+[17:45:15.552] Experiment Settings: Experiment_1, Model: unet
+[17:45:24.825] 145 iterations per epoch

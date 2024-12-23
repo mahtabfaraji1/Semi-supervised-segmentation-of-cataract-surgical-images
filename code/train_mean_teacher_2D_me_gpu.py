@@ -108,6 +108,10 @@ def train():
             noise = torch.clamp(torch.randn_like(
                 unlabeled_volume_batch) * 0.1, -0.2, 0.2)
             ema_inputs = unlabeled_volume_batch + noise
+<<<<<<< HEAD
+=======
+
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
             outputs = model(volume_batch)
             outputs_soft = torch.softmax(outputs, dim=1)
             with torch.no_grad():

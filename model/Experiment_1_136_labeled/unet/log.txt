@@ -1,0 +1,64 @@
+[18:00:05.016] Experiment Settings: Experiment_1, Model: unet
+[18:01:26.175] Experiment Settings: Experiment_1, Model: unet
+[18:02:24.790] Experiment Settings: Experiment_1, Model: unet
+[18:06:14.387] Experiment Settings: Experiment_1, Model: unet
+[18:06:58.975] Experiment Settings: Experiment_1, Model: unet
+[18:10:44.264] Experiment Settings: Experiment_1, Model: unet
+[10:56:03.028] Experiment Settings: Experiment_1, Model: unet
+[10:58:53.894] Experiment Settings: Experiment_1, Model: unet
+[11:16:17.666] Experiment Settings: Experiment_1, Model: unet
+[11:19:49.444] Experiment Settings: Experiment_1, Model: unet
+[11:22:55.373] Experiment Settings: Experiment_1, Model: unet
+[11:23:44.963] 11 iterations per epoch
+[11:29:58.754] Experiment Settings: Experiment_1, Model: unet
+[11:30:28.509] 11 iterations per epoch
+[11:39:02.395] Experiment Settings: Experiment_1, Model: unet
+[11:39:15.313] 11 iterations per epoch
+[11:40:13.850] Experiment Settings: Experiment_1, Model: unet
+[11:40:16.606] 11 iterations per epoch
+[11:41:41.474] Experiment Settings: Experiment_1, Model: unet
+[11:41:43.349] 11 iterations per epoch
+[11:43:41.772] Experiment Settings: Experiment_1, Model: unet
+[11:43:43.799] 11 iterations per epoch
+[11:46:56.835] Experiment Settings: Experiment_1, Model: unet
+[11:46:59.599] 11 iterations per epoch
+[11:49:11.714] Experiment Settings: Experiment_1, Model: unet
+[11:49:14.217] 11 iterations per epoch
+[11:50:13.745] Experiment Settings: Experiment_1, Model: unet
+[11:50:15.833] 11 iterations per epoch
+[11:51:04.034] Experiment Settings: Experiment_1, Model: unet
+[11:51:05.927] 11 iterations per epoch
+[11:51:37.831] Experiment Settings: Experiment_1, Model: unet
+[11:51:39.654] 11 iterations per epoch
+[11:55:09.004] Experiment Settings: Experiment_1, Model: unet
+[11:55:11.254] 11 iterations per epoch
+[11:57:58.456] Experiment Settings: Experiment_1, Model: unet
+[11:58:00.404] 11 iterations per epoch
+[11:59:23.682] Experiment Settings: Experiment_1, Model: unet
+[11:59:25.320] 11 iterations per epoch
+[12:02:08.952] Experiment Settings: Experiment_1, Model: unet
+[12:02:09.040] 11 iterations per epoch
+[12:04:25.793] Experiment Settings: Experiment_1, Model: unet
+[12:04:25.874] 11 iterations per epoch
+[12:08:44.915] Experiment Settings: Experiment_1, Model: unet
+[12:08:44.999] 11 iterations per epoch
+[12:19:35.487] Experiment Settings: Experiment_1, Model: unet
+[12:19:35.581] 11 iterations per epoch
+[12:21:15.404] Experiment Settings: Experiment_1, Model: unet
+[12:21:15.482] 11 iterations per epoch
+[12:23:09.773] Experiment Settings: Experiment_1, Model: unet
+[12:23:09.849] 11 iterations per epoch
+[12:24:06.343] Experiment Settings: Experiment_1, Model: unet
+[12:24:06.421] 11 iterations per epoch
+[12:24:48.716] Experiment Settings: Experiment_1, Model: unet
+[12:24:48.798] 11 iterations per epoch
+[14:47:21.951] Experiment Settings: Experiment_1, Model: unet
+[14:47:22.053] 11 iterations per epoch
+[14:55:11.847] Experiment Settings: Experiment_1, Model: unet
+[14:55:11.930] 11 iterations per epoch
+[14:56:47.515] iteration 1 : loss : 1.920382, loss_ce: 2.875853, loss_dice: 0.964911
+[14:57:46.509] iteration 2 : loss : 1.882339, loss_ce: 2.796608, loss_dice: 0.968070
+[15:16:28.891] Experiment Settings: Experiment_1, Model: unet
+[15:57:32.623] Experiment Settings: Experiment_1, Model: unet
+[16:00:43.470] 11 iterations per epoch
+[16:16:02.016] Experiment Settings: Experiment_1, Model: unet

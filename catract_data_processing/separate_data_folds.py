@@ -23,6 +23,7 @@ def copy_files(file_list, img_folder, mask_folder, dest_img_folder, dest_mask_fo
             print(f"Image or mask not found: {img_name}, {mask_name}")
 
 # Paths to your folders
+<<<<<<< HEAD
 img_folder = '/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/cataract1k/labeled/all/images'
 mask_folder = '/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/cataract1k/labeled/all/masks'
 
@@ -40,6 +41,25 @@ test_mask_dest = '/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/cata
 train_df = pd.read_csv('/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/cataract1k/labeled/fold_3/Cat1k_anatomy_instrument_train_fold3.csv')
 val_df = pd.read_csv('/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/cataract1k/labeled/fold_3/Cat1k_anatomy_instrument_validation_fold3.csv')
 test_df = pd.read_csv('//Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/cataract1k/labeled/fold_3/Cat1k_anatomy_instrument_test_fold3.csv')
+=======
+img_folder = '/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/all/images'
+mask_folder = '/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/all/masks'
+
+# Paths to destination directories
+train_img_dest = '/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/fold_0/train/images'
+train_mask_dest = '/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/fold_0/train/masks'
+
+val_img_dest = '/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/fold_0/val/images'
+val_mask_dest = '/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/fold_0/val/masks'
+
+test_img_dest = '/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/fold_0/test/images'
+test_mask_dest = '/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/fold_0/test/masks'
+
+# Read the CSV files
+train_df = pd.read_csv('/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/Cat1k_anatomy_instrument_train_fold0.csv')
+val_df = pd.read_csv('/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/Cat1k_anatomy_instrument_validation_fold0.csv')
+test_df = pd.read_csv('/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/Cat1k_anatomy_instrument_test_fold0.csv')
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
 
 # Copy the train files
 copy_files(train_df, img_folder, mask_folder, train_img_dest, train_mask_dest)

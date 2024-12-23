@@ -13,7 +13,11 @@ from skimage import segmentation as skimage_seg
 import torch
 from torch.utils.data.sampler import Sampler
 import torch.distributed as dist
+<<<<<<< HEAD
 from datetime import datetime
+=======
+
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
 import networks
 
 # many issues with this function
@@ -161,7 +165,11 @@ class UnifLabelSampler(Sampler):
         return self.N
 
 
+<<<<<<< HEAD
 class AverageMeter(object,):
+=======
+class AverageMeter(object):
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
     """Computes and stores the average and current value"""
 
     def __init__(self):
@@ -252,6 +260,7 @@ def load_ddp_to_nddp(state_dict):
         else:
             model_dict = state_dict
     return model_dict
+<<<<<<< HEAD
 
 def update_values(dict_from, dict_to):
     for key, value in dict_from.items():
@@ -266,3 +275,5 @@ def time_str(fmt=None):
         fmt = '%Y-%m-%d_%H:%M:%S'
     return datetime.today().strftime(fmt)
 
+=======
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b

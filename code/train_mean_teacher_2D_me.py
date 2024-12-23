@@ -19,7 +19,11 @@ from utils import losses, ramps
 from val_2D import test_single_volume
 
 # Setting variables directly
+<<<<<<< HEAD
 root_path = '/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/cataract1k/labeled/all'  # Path to your dataset containing 2D images
+=======
+root_path = '/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k'  # Path to your dataset containing 2D images
+>>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
 exp = 'Experiment_1'
 model_name = 'unet'
 max_iterations = 30000
