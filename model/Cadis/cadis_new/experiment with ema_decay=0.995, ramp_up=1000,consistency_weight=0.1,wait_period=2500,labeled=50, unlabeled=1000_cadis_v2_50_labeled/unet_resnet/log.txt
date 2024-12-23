@@ -1,0 +1,31 @@
+[21:34:58.002] 33 iterations per epoch
+[09:23:28.568] 33 iterations per epoch
+[09:25:21.046] 33 iterations per epoch
+[09:26:53.206] 33 iterations per epoch
+[09:30:29.150] 33 iterations per epoch
+[09:31:45.750] 33 iterations per epoch
+[09:38:34.299] 33 iterations per epoch
+[09:41:43.975] 33 iterations per epoch
+[09:45:01.507] 33 iterations per epoch
+[09:45:21.978] Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.0..255.0].
+[09:49:55.327] 33 iterations per epoch
+[10:04:16.804] 33 iterations per epoch
+[10:25:25.014] Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.0..255.0].
+[10:28:57.749] 33 iterations per epoch
+[10:33:25.073] 33 iterations per epoch
+[10:46:32.711] 33 iterations per epoch
+[10:48:53.726] Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.0..255.0].
+[10:54:15.244] 33 iterations per epoch
+[10:58:23.131] Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.0010690535..253.93428].
+[11:07:21.435] Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.0..255.0].
+[11:14:41.812] 33 iterations per epoch
+[11:16:18.373] 33 iterations per epoch
+[11:42:54.677] Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.0..255.0].
+[14:44:29.911] 33 iterations per epoch
+[14:46:08.770] 33 iterations per epoch
+[14:52:04.795] 33 iterations per epoch
+[14:55:27.369] 33 iterations per epoch
+[16:40:43.686] 33 iterations per epoch
+[16:50:22.213] 33 iterations per epoch
+[16:51:36.063] 33 iterations per epoch
+[16:55:19.681] 33 iterations per epoch

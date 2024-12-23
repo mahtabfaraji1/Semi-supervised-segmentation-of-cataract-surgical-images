@@ -1,0 +1,5 @@
+[16:32:58.928] 33 iterations per epoch
+[20:32:06.394] 33 iterations per epoch
+[20:35:07.681] 33 iterations per epoch
+[20:45:22.284] Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.0..255.0].
+[20:45:52.723] Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.0..255.0].

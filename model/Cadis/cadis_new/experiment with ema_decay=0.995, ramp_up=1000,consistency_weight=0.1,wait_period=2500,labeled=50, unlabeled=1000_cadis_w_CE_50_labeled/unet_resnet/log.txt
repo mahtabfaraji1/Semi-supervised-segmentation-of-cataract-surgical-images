@@ -1,0 +1,5 @@
+[11:15:30.961] 33 iterations per epoch
+[11:34:54.206] 33 iterations per epoch
+[11:36:53.407] 33 iterations per epoch
+[11:39:21.200] 33 iterations per epoch
+[11:49:53.153] 33 iterations per epoch

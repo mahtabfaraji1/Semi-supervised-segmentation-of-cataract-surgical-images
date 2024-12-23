@@ -1,0 +1,22 @@
+[16:21:43.455] 33 iterations per epoch
+[16:24:25.155] iteration 1 : loss : 1.509626, loss_ce: 2.111667, loss_dice: 0.907585, loss_cons: 0.011446 , consistency_weight:0.000000
+[16:25:52.057] iteration 2 : loss : 1.411365, loss_ce: 1.928521, loss_dice: 0.893855, loss_cons: 0.005257 , consistency_weight:0.033690
+[16:36:19.511] 33 iterations per epoch
+[16:37:35.426] iteration 1 : total loss : 1.509626, loss_ce: 2.111667, loss_dice: 0.907585, loss_cons: 0.011446 , consistency_weight:0.000000
+[16:38:25.909] 33 iterations per epoch
+[16:39:57.585] iteration 1 : total loss : 1.509626, loss_ce: 2.111667, loss_dice: 0.907585, loss_cons: 0.011446 , consistency_weight:0.000000
+[16:43:42.486] 33 iterations per epoch
+[16:45:00.400] iteration 1 : total loss : 1.509626, loss_ce: 2.111667, loss_dice: 0.907585, loss_cons: 0.011446 , consistency_weight:0.000000
+[16:46:44.848] 33 iterations per epoch
+[16:47:12.394] 33 iterations per epoch
+[16:48:33.355] iteration 1 : total loss : 1.509626, loss_ce: 2.111667, loss_dice: 0.907585, loss_cons: 0.011446 , consistency_weight:0.000000
+[16:54:01.053] 33 iterations per epoch
+[16:55:28.778] iteration 1 : total loss : 1.509626, loss_ce: 2.111667, loss_dice: 0.907585, loss_cons: 0.011446 , consistency_weight:0.000000
+[16:56:46.271] 33 iterations per epoch
+[16:58:11.308] iteration 1 : total loss : 1.509626, loss_ce: 2.111667, loss_dice: 0.907585, loss_cons: 0.011446 , consistency_weight:0.000000
+[16:59:10.557] 33 iterations per epoch
+[17:00:37.285] iteration 1 : total loss : 1.509626, loss_ce: 2.111667, loss_dice: 0.907585, loss_cons: 0.011446 , consistency_weight:0.000000
+[17:04:53.875] 33 iterations per epoch
+[17:06:12.946] iteration 1 : total loss : 1.509626, loss_ce: 2.111667, loss_dice: 0.907585, loss_cons: 0.011446 , consistency_weight:0.000000
+[17:07:34.281] 33 iterations per epoch
+[17:08:54.004] iteration 1 : total loss : 1.509626, loss_ce: 2.111667, loss_dice: 0.907585, loss_cons: 0.011446 , consistency_weight:0.000000
