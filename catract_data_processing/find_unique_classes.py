@@ -3,7 +3,7 @@ import numpy as np
 from skimage.io import imread
 
 def find_unique_classes(mask_dir):
-    unique_classes = set()  # Use a set to store unique class labels
+    unique_classes = set()  # Use a set to store unique class labels_four_class
 
     # Iterate through all files in the mask directory
     for mask_file in os.listdir(mask_dir):
@@ -18,7 +18,7 @@ def find_unique_classes(mask_dir):
     return unique_classes
 
 # Directory containing your mask images
-mask_directory = '/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/train/labels/'
+mask_directory = '/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/train/labels_four_class/'
 
 # Find the overall unique classes across all masks
 classes = find_unique_classes(mask_directory)

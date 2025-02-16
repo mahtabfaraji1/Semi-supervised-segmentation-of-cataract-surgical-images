@@ -24,9 +24,9 @@ def filter_and_copy_images(all_images_folder, val_folder, test_folder, train_fol
 
 # Specify the paths to each folder
 all_images_folder = "/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/labeled/all/all/masks"
-val_folder = "/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/labeled/all/val/labels"
-test_folder = "/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/labeled/all/test/labels"
-train_folder = "/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/labeled/all/train/labels"
+val_folder = "/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/labeled/all/val/labels_four_class"
+test_folder = "/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/labeled/all/test/labels_four_class"
+train_folder = "/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/labeled/all/train/labels_four_class"
 
 # Run the function
 filter_and_copy_images(all_images_folder, val_folder, test_folder, train_folder)

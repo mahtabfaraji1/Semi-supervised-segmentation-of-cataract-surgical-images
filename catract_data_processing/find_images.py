@@ -49,7 +49,7 @@ def copy_unlabeled_images(images_dir, masks_dir, unlabeled_dir):
 
 # Define the paths
 image_folder = "/home/mahtab/segmentation/SSL4MIS/segmentation_env/data/Catarct1k_10k/600_labeled/train/images"
-label_folder = "/home/mahtab/segmentation/SSL4MIS/segmentation_env/data/Catarct1k_10k/600_labeled/train/labels"
+label_folder = "/home/mahtab/segmentation/SSL4MIS/segmentation_env/data/Catarct1k_10k/600_labeled/train/labels_four_class"
 target_folder = "/home/mahtab/segmentation/SSL4MIS/segmentation_env/data/Catarct1k_10k/all_unlabaled"
 
 # Run the function

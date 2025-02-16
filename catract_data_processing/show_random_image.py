@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 
 # Directories containing images and masks
-image_dir = '/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/bias_data_iris_color/light_iris_color/test/images/'
-mask_dir = '/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/bias_data_iris_color/light_iris_color/test/labels/'
+image_dir = '/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/1200_labeled/val/images'
+mask_dir = '/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/1200_labeled/val/labels'
 
 # Get list of image and mask filenames
 image_filenames = os.listdir(image_dir)
@@ -16,7 +16,7 @@ mask_filenames = os.listdir(mask_dir)
 # Choose a random image and its corresponding mask
 random_index = random.randint(0, len(image_filenames) - 1)
 image_path = os.path.join(image_dir, image_filenames[random_index])
-mask_path = os.path.join(mask_dir, mask_filenames[random_index])
+mask_path = os.path.join(mask_dir, image_filenames[random_index])
 
 # Load the image and mask
 image = cv2.imread(image_path)
@@ -122,7 +122,7 @@ plt.show()
 # # Prepare legend patches
 # legend_patches = [Patch(color=np.array(color) / 255, label=label) for label, color in zip(class_mapping.values(), class_colors.values())]
 #
-# # Plot the image and mask with labels
+# # Plot the image and mask with labels_four_class
 # plt.figure(figsize=(15, 7))
 #
 # # Plot the original image

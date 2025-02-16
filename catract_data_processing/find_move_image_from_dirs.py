@@ -23,8 +23,8 @@ def find_and_move_unique_images(folder1, folder2, destination_folder):
     print(f"Moved {len(unique_images)} unique images to {destination_folder}.")
 
 # Example usage:
-folder1 = '/home/mahtab/segmentation/SSL4MIS/segmentation_env/data/cataract1K_labeled_unlabeld/train/images/labeled/'
-folder2 = '/home/mahtab/segmentation/SSL4MIS/segmentation_env/data/cataract1k/all/train/images'
-destination_folder = '/home/mahtab/segmentation/SSL4MIS/segmentation_env/data/cataract1K_labeled_unlabeld/train/images/unlabeled'
+folder1 = '/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/CVS_data/FIVES_HRF/train/images/'
+folder2 = '/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/CVS_data/FIVES_HRF/mask_OD_vessel/'
+destination_folder = '/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/CVS_data/FIVES_HRF/train/labels/'
 
 find_and_move_unique_images(folder1, folder2, destination_folder)

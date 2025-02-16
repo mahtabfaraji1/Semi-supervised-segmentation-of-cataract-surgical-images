@@ -3,22 +3,22 @@ import cv2
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 
-# Define label mapping: map specific mask labels to target classes
+# Define label mapping: map specific mask labels_four_class to target classes
 label_mapping = {
     0: 2,  # Pupil
     4: 1  # iris
 }
-# Define additional labels for Instruments
+# Define additional labels_four_class for Instruments
 instruments_labels = [label for label in range(33) if label not in {0,1, 2, 3,4, 5, 6}]
 label_mapping.update({label: 4 for label in instruments_labels})
 
 
 def map_labels(mask, label_mapping):
     """
-    Map mask labels based on the given mapping dictionary.
+    Map mask labels_four_class based on the given mapping dictionary.
     Args:
-        mask (np.array): The input mask with fine-grained labels.
-        label_mapping (dict): The mapping from fine-grained labels to target classes.
+        mask (np.array): The input mask with fine-grained labels_four_class.
+        label_mapping (dict): The mapping from fine-grained labels_four_class to target classes.
     Returns:
         np.array: The mapped mask with target classes.
     """
@@ -47,7 +47,7 @@ def display_image_and_mask(image, mask, mapped_mask):
     Display the original image, original mask, and mapped mask side-by-side.
     Args:
         image (np.array): The original RGB image.
-        mask (np.array): The original mask with fine-grained labels.
+        mask (np.array): The original mask with fine-grained labels_four_class.
         mapped_mask (np.array): The mapped mask with target classes.
     """
     cmap = create_custom_colormap()
@@ -74,7 +74,7 @@ def display_image_and_mask(image, mask, mapped_mask):
 image = cv2.imread('/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/CaDISv2/test/Video02/Images/Video2_frame000440.png')
 mask = cv2.imread('/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/CaDISv2/test/Video02/Labels/Video2_frame000440.png', cv2.IMREAD_GRAYSCALE)
 
-# Map the mask labels
+# Map the mask labels_four_class
 mapped_mask = map_labels(mask, label_mapping)
 
 # Display the image and masks

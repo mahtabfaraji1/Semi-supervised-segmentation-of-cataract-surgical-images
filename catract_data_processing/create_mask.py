@@ -5,11 +5,9 @@ import os
 from PIL import Image, ImageDraw
 from collections import namedtuple
 
-<<<<<<< HEAD
-data_folder = '/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/train_cases'
-=======
+data_folder = '/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/video_catarct1k/video'
+folder = 'json'
 data_folder = '/Users/mahtab/.synapseCache/data'
->>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
 folder = 'json'
 folder_masks_anatomy_inst = 'mask_anatomy_inst'
 
@@ -30,10 +28,6 @@ Label = namedtuple('Label', [
     'color',  # The color of this label
     'train_id'
 ])
-<<<<<<< HEAD
-=======
-
->>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
 instrument_names = ['Slit Knife', 'Gauge', 'Capsulorhexis Cystotome', 'Spatula', 'Phacoemulsification Tip',
                     'Irrigation-Aspiration', 'Lens Injector', 'Incision Knife', 'Katena Forceps',
                     'Capsulorhexis Forceps']
@@ -65,7 +59,6 @@ for p in range(len(case_list)):
 
         for i in range(len(jlist)):
             if jlist[i] != '.DS_Store':
-<<<<<<< HEAD
                 # data = json.load(read_file)
                 file_name= case_json_folder + '/' + jlist[i]
                 if jlist[i] != "SYNAPSE_METADATA_MANIFEST.tsv":
@@ -129,7 +122,6 @@ for p in range(len(case_list)):
                             draw1.polygon(ext, fill=4)
 
                     image_Mix.save(case_folder + '/' + folder_masks_anatomy_inst + '/' + name)
-=======
                 with open(case_json_folder + '/' + jlist[i], "r", encoding='latin1') as read_file:
                     data = json.load(read_file)
                     # print(data)
@@ -186,7 +178,6 @@ for p in range(len(case_list)):
                         draw1.polygon(ext, fill=4)
 
                 image_Mix.save(case_folder + '/' + folder_masks_anatomy_inst + '/' + name)
->>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
 
     # # To test mask creation:
     # for i in range(len(jlist)):

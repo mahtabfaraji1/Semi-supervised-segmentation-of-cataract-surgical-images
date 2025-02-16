@@ -67,9 +67,6 @@ def process_videos_in_folder(folder_path):
 
 
 # Example usage: Provide the path to the folder containing your videos
-<<<<<<< HEAD
 folder_path = "/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/video_catarct1k"  # Update this with the actual path to your folder
-=======
-folder_path = "/Users/mahtab/Downloads/SSL4MIS/segmentation_env/catract_data_processing/video_data"  # Update this with the actual path to your folder
->>>>>>> 449b5ac79109e7001f662329e3abcdbbbb7a7d4b
+# folder_path = "/Users/mahtab/Downloads/SSL4MIS/segmentation_env/catract_data_processing/video_data"  # Update this with the actual path to your folder
 process_videos_in_folder(folder_path)

@@ -120,45 +120,45 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Create some data for x and y (U-Net and MeanTeacher)
-x = [50, 200, 400, 600, 800, 1000]
+x = [100, 400, 800, 1200]
 
 # U-Net data (DCS) with standard deviations
-y1_unet = np.array([0.56, 0.81, 0.86, 0.87, 0.87, 0.89])  # cornea
-y1_unet_std = np.array([0.13, 0.08, 0.09, 0.08, 0.08, 0.08])
-y2_unet = np.array([0.67, 0.78, 0.85, 0.88, 0.89, 0.89])  # pupil
-y2_unet_std = np.array([0.23, 0.23, 0.15, 0.12, 0.1, 0.12])
-y3_unet = np.array([0.66, 0.79, 0.82, 0.86, 0.89, 0.90])  # lens
-y3_unet_std = np.array([0.16, 0.12, 0.15, 0.12, 0.09, 0.06])
-y4_unet = np.array([0.34, 0.41, 0.65, 0.70, 0.73, 0.75])  # instrument
-y4_unet_std = np.array([0.16, 0.17, 0.18, 0.17, 0.17, 0.16])
-y5_unet = np.array([0.55, 0.69, 0.79, 0.82, 0.84, 0.85])  # Average
+y1_unet = np.array([0.66, 0.86, 0.88, 0.89])  # cornea
+# y1_unet_std = np.array([0.08, 0.08,0.08,0.08])
+y2_unet = np.array([0.75,0.85, 0.89,0.9])  # pupil
+# y2_unet_std = np.array([0.19,0.12,0.09,0.12])
+y3_unet = np.array([0.61, 0.83,0.89,0.91])  # lens
+# y3_unet_std = np.array([0.15,0.12 ,0.12])
+y4_unet = np.array([0.40,0.66,0.74,0.78])  # instrument
+# y4_unet_std = np.array([0.18, 0.17,0.17,0.16])
+# y5_unet = np.array([0.55, 0.69, 0.79, 0.82, 0.84, 0.85])  # Average
 
 # MeanTeacher (MT) data (DCS) with standard deviations
-y1_mt = np.array([0.67, 0.82, 0.87, 0.88, 0.88, 0.89])  # cornea
-y1_mt_std = np.array([0.11, 0.08, 0.08, 0.08, 0.08, 0.08])
-y2_mt = np.array([0.70, 0.79, 0.87, 0.89, 0.90, 0.90])  # pupil
-y2_mt_std = np.array([0.24, 0.23, 0.12, 0.11, 0.1, 0.1])
-y3_mt = np.array([0.66, 0.79, 0.87, 0.87, 0.89, 0.89])  # lens
-y3_mt_std = np.array([0.19, 0.12, 0.11, 0.12, 0.07, 0.06])
-y4_mt = np.array([0.34, 0.46, 0.66, 0.73, 0.76, 0.76])  # instrument
-y4_mt_std = np.array([0.15, 0.17, 0.16, 0.17, 0.15, 0.16])
-y5_mt = np.array([0.59, 0.71, 0.81, 0.84, 0.85, 0.85])  # Average
+y1_mt = np.array([0.78,0.88,0.90,0.91])  # cornea mean:0.91, STD: 0.04	mean:0.93, STD: 0.09	mean:0.94, STD: 0.02	mean:0.85, STD: 0.12
+# y1_mt_std = np.array([0.07,0.04 ,0.04,0.04])
+y2_mt = np.array([0.84, 0.91,0.93,0.93])  # pupil
+# y2_mt_std = np.array([ 0.13,0.08 ,0.08,0.09])
+y3_mt = np.array([0.83,  0.91,0.93,0.93])  # lens
+# y3_mt_std = np.array([0.08, 0.03 ,0.03,0.02])
+y4_mt = np.array([0.53, 0.77,0.82,0.83])  # instrument
+# y4_mt_std = np.array([0.13, 0.15,0.13,0.12])
+# y5_mt = np.array([0.59, 0.71, 0.81, 0.84, 0.85, 0.85])  # Average
 
 # Create a 2x3 grid of plots
-fig, axs = plt.subplots(2, 3, figsize=(14, 8))
+fig, axs = plt.subplots(2, 2, figsize=(14, 8))
 
 # Plot titles
-titles = ['Iris', 'Pupil', 'Lens', 'Instrument', 'Average']
+titles = ['Iris', 'Pupil', 'Lens', 'Instrument']
 
 # Data for plots
-unet_data = [y1_unet, y2_unet, y3_unet, y4_unet, y5_unet]
-mt_data = [y1_mt, y2_mt, y3_mt, y4_mt, y5_mt]
-unet_std = [y1_unet_std, y2_unet_std, y3_unet_std, y4_unet_std]
-mt_std = [y1_mt_std, y2_mt_std, y3_mt_std, y4_mt_std]
+unet_data = [y1_unet, y2_unet, y3_unet, y4_unet]
+mt_data = [y1_mt, y2_mt, y3_mt, y4_mt]
+# unet_std = [y1_unet_std, y2_unet_std, y3_unet_std, y4_unet_std]
+# mt_std = [y1_mt_std, y2_mt_std, y3_mt_std, y4_mt_std]
 
 # Colors and markers
-colors = {'U-Net': '#1f77b4', 'MT': '#ff7f0e'}
-markers = {'U-Net': 'o', 'MT': 's'}
+colors = {'U-Net': '#1f77b4', 'DeepLabV3': '#ff7f0e'}
+markers = {'U-Net': 'o', 'DeepLabV3': 's'}
 
 # Shared plot parameters
 plot_params = {
@@ -174,7 +174,7 @@ plot_params = {
 for i, ax in enumerate(axs.flat):
     if i < 5:  # For the first 5 plots
         ax.errorbar(x, unet_data[i], fmt=markers['U-Net'], color=colors['U-Net'], label='Supervised U-Net', **plot_params)
-        ax.errorbar(x, mt_data[i], fmt=markers['MT'], color=colors['MT'], label='Semi-supervised MT', **plot_params)
+        ax.errorbar(x, mt_data[i], fmt=markers['DeepLabV3'], color=colors['DeepLabV3'], label='Supervised DeepLabV3', **plot_params)
         ax.set_title(titles[i], fontsize=14)
         ax.set_xlabel('Number of Labeled Data', fontsize=12)
         ax.set_ylabel('DCS', fontsize=12)
@@ -185,5 +185,5 @@ for i, ax in enumerate(axs.flat):
 
 # Adjust layout and save
 plt.tight_layout()
-fig.savefig('DSC_Exponential_Scale_with_Std_Pretty.png', dpi=300)
+fig.savefig('DSC_Exponential_Scale_with_Std_Pretty_UNet_DeepLabv3.png', dpi=300)
 plt.show()

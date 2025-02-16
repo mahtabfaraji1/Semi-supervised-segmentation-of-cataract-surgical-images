@@ -4,9 +4,9 @@ import shutil
 
 # Set up paths
 image_dir = '/home/mahtab/nas/cataract1k/all/train/images'  # Replace with your image directory path
-mask_dir = '/home/mahtab/nas/cataract1k/all/train/labels'  # Replace with your mask directory path
+mask_dir = '/home/mahtab/nas/cataract1k/all/train/labels_four_class'  # Replace with your mask directory path
 target_image_dir = '/home/mahtab/nas/cataract1k/data_100/images'  # Directory to move selected images
-target_mask_dir = '/home/mahtab/nas/cataract1k/data_100/labels'  # Directory to move selected masks
+target_mask_dir = '/home/mahtab/nas/cataract1k/data_100/labels_four_class'  # Directory to move selected masks
 
 # Create target directories if they don't exist
 os.makedirs(target_image_dir, exist_ok=True)

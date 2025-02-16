@@ -33,8 +33,8 @@ def select_and_move_images(image_dir, label_dir, target_image_dir, target_label_
 image_dir = "/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/labeled/train/images"
 target_image_dir = "/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/labeled/train_labeled_500/images"
 
-label_dir ="/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/labeled/train/labels"
-target_label_dir ="/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/labeled/train_labeled_500/labels"
+label_dir ="/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/labeled/train/labels_four_class"
+target_label_dir ="/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/labeled/train_labeled_500/labels_four_class"
 
 
 # Run the function

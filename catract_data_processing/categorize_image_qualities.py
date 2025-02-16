@@ -93,7 +93,7 @@ def perform_statistical_tests(df, metrics_list):
     Performs t-tests on the specified metrics between two groups.
 
     Parameters:
-        df (pd.DataFrame): DataFrame containing image metrics and labels.
+        df (pd.DataFrame): DataFrame containing image metrics and labels_four_class.
         metrics_list (list): List of metric column names to test.
 
     Returns:
@@ -129,7 +129,7 @@ def generate_boxplots(df, output_dir):
     Generates box plots for each metric comparing two groups.
 
     Parameters:
-        df (pd.DataFrame): DataFrame containing image metrics and labels.
+        df (pd.DataFrame): DataFrame containing image metrics and labels_four_class.
         output_dir (str): Directory to save the plots.
     """
     metrics = ['Brightness', 'Contrast', 'Focus']
@@ -147,7 +147,7 @@ def generate_histograms(df, output_dir):
     Generates histograms for each metric comparing two groups.
 
     Parameters:
-        df (pd.DataFrame): DataFrame containing image metrics and labels.
+        df (pd.DataFrame): DataFrame containing image metrics and labels_four_class.
         output_dir (str): Directory to save the plots.
     """
     metrics = ['Brightness', 'Contrast', 'Focus']

@@ -35,8 +35,8 @@ def rename_and_save_images_masks(images_dir, masks_dir, output_images_dir, outpu
 
 # Example usage
 images_directory = '/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/train/images'
-masks_directory = '/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/train/labels'
+masks_directory = '/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/train/labels_four_class'
 output_images_directory = '/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/renamed/images'
-output_masks_directory = '/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/renamed/labels'
+output_masks_directory = '/Users/mahtab/Downloads/SSL4MIS/segmentation_env/data/cataract1k/labeled/renamed/labels_four_class'
 
 rename_and_save_images_masks(images_directory, masks_directory, output_images_directory, output_masks_directory)

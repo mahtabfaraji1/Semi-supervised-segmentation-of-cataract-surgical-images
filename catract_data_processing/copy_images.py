@@ -23,7 +23,7 @@ def copy_images(src_dir, dst_dir):
 
 
 if __name__ == "__main__":
-    source_directory = "//home/mahtab/segmentation/SSL4MIS/segmentation_env/data/Catarct1k_10k/all_unlabaled"
-    destination_directory = "/home/mahtab/segmentation/SSL4MIS/segmentation_env/data/Catarct1k_10k/300_labeled/train/images"
+    source_directory = "/home/mahtab/segmentation/SSL4MIS/segmentation_env/data/Catarct1k_40k/all_unlabaled"
+    destination_directory = "/home/mahtab/segmentation/SSL4MIS/segmentation_env/data/Catarct1k_40k/1200_labeled/train/images"
 
     copy_images(source_directory, destination_directory)

@@ -13,7 +13,7 @@ def count_classes_in_masks(directory_path):
     directory_path (str): Path to the directory containing segmentation mask images.
 
     Returns:
-    Counter: A dictionary with class labels as keys and their total occurrences as values.
+    Counter: A dictionary with class labels_four_class as keys and their total occurrences as values.
     """
     instance_counts = Counter()
 
@@ -47,6 +47,6 @@ def count_classes_in_masks(directory_path):
 
 
 # Example usage:
-directory_path = '/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/CaDISv2/train_50/labels/'
+directory_path = '/Users/mahtab/Downloads/SSL4MIS/segmentation_project/data/100_labeled_data_semisupervised/test/labels/'
 instance_counts = count_classes_in_masks(directory_path)
 print("Class counts across all masks:", instance_counts)
