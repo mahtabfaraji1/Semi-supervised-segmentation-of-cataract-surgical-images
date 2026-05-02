@@ -212,7 +212,7 @@ python test_supervised.py \
 
 ## Citation
 
-If you use this code or the Cataract-1K dataset splits in your work, please cite:
+If you use this code in your work, please cite:
 
 ```bibtex
 @article{faraji2026mt,
