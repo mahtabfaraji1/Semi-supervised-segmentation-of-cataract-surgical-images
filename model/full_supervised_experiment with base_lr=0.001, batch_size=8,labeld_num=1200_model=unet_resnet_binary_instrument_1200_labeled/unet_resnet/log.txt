@@ -1,7 +1,0 @@
-[10:12:22.446] 150 iterations per epoch
-[10:17:37.177] 150 iterations per epoch
-[10:18:52.340] 150 iterations per epoch
-[10:26:49.856] 150 iterations per epoch
-[10:30:33.253] 150 iterations per epoch
-[10:37:19.200] 150 iterations per epoch
-[10:40:53.110] 150 iterations per epoch

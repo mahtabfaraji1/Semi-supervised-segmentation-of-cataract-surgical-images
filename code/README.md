@@ -1,47 +1,254 @@
-## Semi-supervised Learning for Medical Image Segmentation (**SSL4MIS**)
+# Semi-Supervised Segmentation of Cataract Surgical Images
 
-## Requirements
-Some important required packages include:
-* [Pytorch][torch_link] version >=0.4.1.
-* TensorBoardX
-* Python == 3.6 
-* Efficientnet-Pytorch `pip install efficientnet_pytorch`
-* Some basic python packages such as Numpy, Scikit-image, SimpleITK, Scipy ......
+Official implementation of:
 
-Follow official guidance to install [Pytorch][torch_link].
+> **An Evaluation of the Mean Teacher Framework for Semi-Supervised Cataract Surgical Image Segmentation**  
+> Mahtab Faraji, Darvin Yi, Michael J. Heiferman, Homa Rashidisabet  
+> *Translational Vision Science & Technology*, 2026, 15(4):5  
+> DOI: [10.1167/tvst.15.4.5](https://doi.org/10.1167/tvst.15.4.5)
 
-[torch_link]:https://pytorch.org/
+---
 
-# Usage
+## Overview
 
-1. Clone the repo:
+This repository provides the full training, validation, and test pipeline for semi-supervised semantic segmentation of cataract surgical images. We adapt the [Mean Teacher (MT)](https://arxiv.org/abs/1703.01780) framework to segment four clinically relevant structures from surgical microscope video frames:
+
+
+## Repository Structure
+
 ```
-git clone https://github.com/HiLab-git/SSL4MIS.git
-cd SSL4MIS
+├── train_mt.py                  # Mean Teacher semi-supervised training
+├── train_supervised.py          # Fully supervised training (UNet / SwinUNet)
+├── test_mt.py                   # Evaluation for the MT model
+├── test_supervised.py           # Evaluation for supervised models
+├── test_utils.py                # Shared inference, metrics, and visualization
+├── val.py                       # Validation utilities (DSC, HD95 per class)
+│
+├── dataloaders/
+│   └── dataset.py               # Dataset, augmentation, TwoStreamBatchSampler
+│
+├── networks/
+│   ├── net_factory.py           # Model factory (UNet-ResNet50)
+│   ├── unet.py                  # UNet and UNetResnet definitions
+│   └── vision_transformer.py    # SwinUNet definition
+│
+├── utils/
+│   └── losses.py                # DiceLoss
+│
+└── configs/
+    └── swin_tiny_patch4_window7_224_lite.yaml   # SwinUNet config
 ```
-2. Download the processed data and put the data in `../data/BraTS2019` or `../data/ACDC`, please read and follow the [README](https://github.com/Luoxd1996/SSL4MIS/tree/master/data/).
 
-3. Train the model
+---
+
+## Datasets
+
+Three publicly available datasets are used. Download and organize them as described below before running any training or evaluation script.
+
+**Cataract-1K** (primary training dataset)  
+2,256 annotated frames from 30 cataract surgery videos. We additionally extract 40,000 unlabeled frames from the unannotated portions at 1 frame per 5 seconds.  
+Download: [Synapse](https://www.synapse.org/Synapse:syn53404507)
+
+**CaDIS** (external evaluation)  
+4,670 frames annotated into 36 categories from Zeiss OPMI Lumera microscope recordings.  
+Download: [Grand Challenge](https://cataracts-semantic-segmentation2020.grand-challenge.org/Data/)
+
+**CatInstSeg** (external evaluation)  
+843 frames with annotations for 11 distinct instrument types.  
+Download: [ITEC FTP](https://ftp.itec.aau.at/datasets/ovid/InSegCat/)
+
+### Expected directory layout
+
 ```
-cd code
-python train_XXXXX_3D.py or python train_XXXXX_2D.py or bash train_acdc_XXXXX.sh
+data/
+├── train/
+│   ├── images/          # All training frames (labeled + unlabeled together)
+│   └── labels/          # Labeled frames only (grayscale PNG, pixel = class index)
+├── val/
+│   ├── images/
+│   └── labels/
+└── test/
+    ├── images/
+    └── labels/
 ```
 
-4. Test the model
+Frames without a corresponding file in `labels/` are treated automatically as unlabeled. 
+
+Label encoding: `0` background, `1` iris, `2` pupil, `3` intraocular lens (IOL), `4` instrument.
+
+---
+
+## Installation
+
+```bash
+git clone https://github.com/mahtabfaraji1/Semi-supervised-segmentation-of-cataract-surgical-images.git
+cd Semi-supervised-segmentation-of-cataract-surgical-images
+pip install -r requirements.txt
 ```
-python test_XXXXX.py
+
+**Core dependencies:**
+
 ```
-# Reimplemented methods
-* [Mean Teacher](https://papers.nips.cc/paper/6719-mean-teachers-are-better-role-models-weight-averaged-consistency-targets-improve-semi-supervised-deep-learning-results.pdf)[[2D](https://github.com/HiLab-git/SSL4MIS/blob/master/code/train_mean_teacher_2D.py)/[3D](https://github.com/HiLab-git/SSL4MIS/blob/master/code/train_mean_teacher_3D.py)]
-* [Entropy Minimization](https://openaccess.thecvf.com/content_CVPR_2019/papers/Vu_ADVENT_Adversarial_Entropy_Minimization_for_Domain_Adaptation_in_Semantic_Segmentation_CVPR_2019_paper.pdf)[[2D](https://github.com/HiLab-git/SSL4MIS/blob/master/code/train_entropy_minimization_2D.py)/[3D](https://github.com/HiLab-git/SSL4MIS/blob/master/code/train_entropy_minimization_3D.py)]
-* [Deep Adversarial Networks](https://link.springer.com/chapter/10.1007/978-3-319-66179-7_47)[[2D](https://github.com/HiLab-git/SSL4MIS/blob/master/code/train_adversarial_network_2D.py)/[3D](https://github.com/HiLab-git/SSL4MIS/blob/master/code/train_adversarial_network_3D.py)]
-* [Uncertainty Aware Mean Teacher](https://arxiv.org/pdf/1907.07034.pdf)[[2D](https://github.com/HiLab-git/SSL4MIS/blob/master/code/train_uncertainty_aware_mean_teacher_2D.py)/[3D](https://github.com/HiLab-git/SSL4MIS/blob/master/code/train_uncertainty_aware_mean_teacher_3D.py)]
-* [Interpolation Consistency Training](https://arxiv.org/pdf/1903.03825.pdf)[[2D](https://github.com/HiLab-git/SSL4MIS/blob/master/code/train_interpolation_consistency_training_2D.py)/[3D](https://github.com/HiLab-git/SSL4MIS/blob/master/code/train_interpolation_consistency_training_3D.py)]
-* [Uncertainty Rectified Pyramid Consistency](https://arxiv.org/pdf/2012.07042.pdf)[[2D](https://github.com/HiLab-git/SSL4MIS/blob/master/code/train_uncertainty_rectified_pyramid_consistency_2D.py)/[3D](https://github.com/HiLab-git/SSL4MIS/blob/master/code/train_uncertainty_rectified_pyramid_consistency_3D.py)]
-* [Cross Pseudo Supervision](https://arxiv.org/abs/2106.01226)[[2D](https://github.com/HiLab-git/SSL4MIS/blob/master/code/train_cross_pseudo_supervision_2D.py)/[3D](https://github.com/HiLab-git/SSL4MIS/blob/master/code/train_cross_pseudo_supervision_3D.py)]
-* [Cross Consistency Training](https://openaccess.thecvf.com/content_CVPR_2020/papers/Ouali_Semi-Supervised_Semantic_Segmentation_With_Cross-Consistency_Training_CVPR_2020_paper.pdf)[[2D](https://github.com/HiLab-git/SSL4MIS/blob/master/code/train_cross_consistency_training_2D.py)]
-* [Deep Co-Training](https://openaccess.thecvf.com/content_ECCV_2018/papers/Siyuan_Qiao_Deep_Co-Training_for_ECCV_2018_paper.pdf)[[2D](https://github.com/HiLab-git/SSL4MIS/blob/master/code/train_deep_co_training_2D.py)]
-* [Cross Teaching between CNN and Transformer](https://arxiv.org/pdf/2112.04894.pdf)[[2D](https://github.com/HiLab-git/SSL4MIS/blob/master/code/train_cross_teaching_between_cnn_transformer_2D.py)]
-* [Regularized Dropout](https://proceedings.neurips.cc/paper/2021/file/5a66b9200f29ac3fa0ae244cc2a51b39-Paper.pdf)[[2D](https://github.com/HiLab-git/SSL4MIS/blob/master/code/train_regularized_dropout_2D.py)/[3D](https://github.com/HiLab-git/SSL4MIS/blob/master/code/train_regularized_dropout_3D.py)]
-## Acknowledgement
-* Part of the code is adapted from open-source codebase and original implementations of algorithms, we thank these author for their fantastic and efficient codebase, such as, [UA-MT](https://github.com/yulequan/UA-MT), [Attention-Gated-Networks](https://github.com/ozan-oktay/Attention-Gated-Networks) and [segmentatic_segmentation.pytorch](https://github.com/qubvel/segmentation_models.pytorch) . 
+torch >= 1.12
+torchvision
+numpy
+scipy
+scikit-image
+opencv-python
+medpy
+tqdm
+Pillow
+matplotlib
+timm          
+```
+
+---
+
+## Training
+
+### Mean Teacher (semi-supervised)
+
+```bash
+python train_mt.py \
+    --root_path     ./data/ \
+    --labeled_num   100 \
+    --unlabeled_num 40000 \
+    --noise_type    gaussian_noise \
+    --noise_amount  15 \
+    --consistency   0.1 \
+    --ema_decay     0.995 \
+    --ramp_up       1000 \
+    --wait_period   2500 \
+    --max_iterations 40000 \
+    --batch_size    24 \
+    --base_lr       0.01 \
+    --num_classes   5
+```
+
+
+**Key hyperparameters**:
+
+| Parameter | Paper optimal | Argument |
+|---|---|---|
+| Consistency weight λ | 0.1 | `--consistency` |
+| EMA decay α | 0.995 | `--ema_decay` |
+| Noise type | Gaussian | `--noise_type` |
+| Noise σ | 15 | `--noise_amount` |
+| Ramp-up length | 1,000 iters | `--ramp_up` |
+
+---
+
+### Fully supervised baselines
+
+**UNet-ResNet50**:
+
+```bash
+python train_supervised.py \
+    --model          unet_resnet \
+    --root_path      ./data/ \
+    --max_iterations 40000 \
+    --batch_size     24 \
+    --base_lr        0.01 \
+    --patch_size     256 256 \
+    --num_classes    5
+```
+
+**SwinUNet**:
+
+```bash
+python train_supervised.py \
+    --model          swinunet \
+    --root_path      ./data/ \
+    --max_iterations 40000 \
+    --batch_size     24 \
+    --base_lr        0.001 \
+    --patch_size     224 224 \
+    --num_classes    5 \
+    --cfg            ./configs/swin_tiny_patch4_window7_224_lite.yaml
+```
+
+---
+
+## Evaluation
+
+### MT model
+
+```bash
+python test_mt.py \
+    --image_dir     ./data/test/images \
+    --label_dir     ./data/test/labels \
+    --model_path    ./model/<exp_name>/unet_resnet_best_model.pth \
+    --output_dir    ./results/mt_100labeled \
+    --labeled_num   100 \
+    --unlabeled_num 40000 \
+    --num_classes   5
+```
+
+
+### Supervised models
+
+```bash
+# UNet-ResNet50
+python test_supervised.py \
+    --model      unet_resnet \
+    --image_dir  ./data/test/images \
+    --label_dir  ./data/test/labels \
+    --model_path ./model/<exp_name>/unet_resnet_best_model.pth \
+    --output_dir ./results/unet_resnet \
+    --num_classes 5
+
+# SwinUNet
+python test_supervised.py \
+    --model      swinunet \
+    --image_dir  ./data/test/images \
+    --label_dir  ./data/test/labels \
+    --model_path ./model/<exp_name>/swinunet_best_model.pth \
+    --output_dir ./results/swinunet \
+    --patch_size 224 224 \
+    --num_classes 5 \
+    --cfg        ./configs/swin_tiny_patch4_window7_224_lite.yaml
+```
+
+
+## Citation
+
+If you use this code or the Cataract-1K dataset splits in your work, please cite:
+
+```bibtex
+@article{faraji2026mt,
+  title     = {An Evaluation of the Mean Teacher Framework for
+               Semi-Supervised Cataract Surgical Image Segmentation},
+  author    = {Faraji, Mahtab and Yi, Darvin and Heiferman, Michael J.
+               and Rashidisabet, Homa},
+  journal   = {Translational Vision Science \& Technology},
+  volume    = {15},
+  number    = {4},
+  pages     = {5},
+  year      = {2026},
+  doi       = {10.1167/tvst.15.4.5}
+}
+```
+
+The Mean Teacher framework is based on:
+
+```bibtex
+@article{tarvainen2017mean,
+  title   = {Mean teachers are better role models: Weight-averaged consistency
+             targets improve semi-supervised deep learning results},
+  author  = {Tarvainen, Antti and Valpola, Harri},
+  journal = {arXiv preprint arXiv:1703.01780},
+  year    = {2017}
+}
+```
+
+---
+
+## Acknowledgments
+
+**Funding:** Supported by an Unrestricted Grant from Research to Prevent Blindness, a generous donation from the Cless Family Foundation, and NIH P30 EY001792 Core Grant.
+
+**Codebase:** This project builds on the [SSL4MIS](https://github.com/HiLab-git/SSL4MIS) repository by Xiangde Luo et al. (HiLab, UESTC), which provides open-source implementations of semi-supervised learning methods for medical image segmentation. We adapted the Mean Teacher training loop, TwoStreamBatchSampler, and several utility components from that codebase. We thank the authors for making their code publicly available.
+
+---
+
+

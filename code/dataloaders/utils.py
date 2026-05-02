@@ -78,7 +78,7 @@ def decode_seg_map_sequence(label_masks, dataset='pascal'):
     return rgb_masks
 
 def decode_segmap(label_mask, dataset, plot=False):
-    """Decode segmentation class labels into a color image
+    """Decode segmentation class labels_four_class into a color image
     Args:
         label_mask (np.ndarray): an (M,N) array of integer values denoting
           the class label at each spatial location.

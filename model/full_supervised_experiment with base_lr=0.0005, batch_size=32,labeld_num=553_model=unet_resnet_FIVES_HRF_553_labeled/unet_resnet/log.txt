@@ -1,2 +1,0 @@
-[07:50:34.662] 18 iterations per epoch
-[07:58:25.227] 18 iterations per epoch

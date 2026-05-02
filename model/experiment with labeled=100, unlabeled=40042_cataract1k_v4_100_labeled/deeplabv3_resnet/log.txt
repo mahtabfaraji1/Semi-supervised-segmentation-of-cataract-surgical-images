@@ -1,7 +1,0 @@
-[15:56:04.337] 33 iterations per epoch
-[15:57:11.455] iteration 1 : total loss : 1.523088, loss_ce: 2.187135, loss_dice: 0.859042, loss_cons: 0.058124 , con_weight: 0.000000
-[15:58:00.378] iteration 2 : total loss : 1.279779, loss_ce: 1.744992, loss_dice: 0.814567, loss_cons: 0.023485 , con_weight: 0.000000
-[15:58:45.177] iteration 3 : total loss : 1.073060, loss_ce: 1.363040, loss_dice: 0.783081, loss_cons: 0.023173 , con_weight: 0.000000
-[15:59:26.540] iteration 4 : total loss : 0.760175, loss_ce: 0.792713, loss_dice: 0.727638, loss_cons: 0.024812 , con_weight: 0.000000
-[16:00:11.594] iteration 5 : total loss : 0.709612, loss_ce: 0.716055, loss_dice: 0.703169, loss_cons: 0.028410 , con_weight: 0.000000
-[16:01:07.137] iteration 6 : total loss : 0.609832, loss_ce: 0.517473, loss_dice: 0.702191, loss_cons: 0.029071 , con_weight: 0.000000

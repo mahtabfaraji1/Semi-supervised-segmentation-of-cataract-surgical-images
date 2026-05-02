@@ -1,4 +1,0 @@
-[10:55:54.777] 600 iterations per epoch
-[11:06:08.153] 600 iterations per epoch
-[11:10:52.984] 600 iterations per epoch
-[11:12:58.731] iteration 1 : loss : 0.734316, loss_ce: 0.865608, loss_dice: 0.603023
