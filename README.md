@@ -170,10 +170,11 @@ python train_supervised.py \
 ---
 
 ## Checkpoints & Pre-trained Models
-
+```bash
 Pre-trained weights and evaluation checkpoints for two of our models are included in the repository. You can find them under the `model/` folder 
 You can use these paths directly in the evaluation scripts below without needing to re-train the models.
 More checkpoints will be shared upon the request.
+```
 ---
 
 ## Evaluation
