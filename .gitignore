@@ -5,8 +5,8 @@
 .DS_Store
 
 # Data, models, results (too large) -- keep folder structure only
-data/*
-!data/.gitkeep
+#data/*
+#!data/.gitkeep
 model/*
 !model/.gitkeep
 results/*
