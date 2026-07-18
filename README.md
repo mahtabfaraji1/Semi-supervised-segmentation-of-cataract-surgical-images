@@ -12,7 +12,7 @@ Official implementation of:
 ## Overview
 
 This repository provides the full training, validation, and test pipeline for semi-supervised semantic segmentation of cataract surgical images. We adapt the [Mean Teacher (MT)](https://arxiv.org/abs/1703.01780) framework to segment four clinically relevant structures from surgical microscope video frames:
-
+![Overview Diagram](main_overview.png)
 
 ## Repository Structure
 
