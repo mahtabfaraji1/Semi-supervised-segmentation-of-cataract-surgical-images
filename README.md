@@ -171,12 +171,9 @@ python train_supervised.py \
 
 ## Checkpoints & Pre-trained Models
 
-Pre-trained weights and evaluation checkpoints for our models are included in the repository. You can find them under the `model/` folder organized by experiment name:
-* `model/<exp_name>/unet_resnet_best_model.pth` (Mean Teacher & Supervised Baseline)
-* `model/<exp_name>/swinunet_best_model.pth` (SwinUNet Baseline)
-
+Pre-trained weights and evaluation checkpoints for two of our models are included in the repository. You can find them under the `model/` folder 
 You can use these paths directly in the evaluation scripts below without needing to re-train the models.
-
+More checkpoints will be shared upon the request.
 ---
 
 ## Evaluation
