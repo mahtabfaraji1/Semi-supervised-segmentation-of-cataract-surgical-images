@@ -7,8 +7,8 @@
 # Data, models, results (too large) -- keep folder structure only
 #data/*
 #!data/.gitkeep
-model/*
-!model/.gitkeep
+#model/*
+#!model/.gitkeep
 results/*
 !results/.gitkeep
 # Python cache
