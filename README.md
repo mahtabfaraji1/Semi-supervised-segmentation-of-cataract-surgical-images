@@ -21,7 +21,7 @@ This repository provides the full training, validation, and test pipeline for se
 ├── train_supervised.py          # Fully supervised training (UNet / SwinUNet)
 ├── test_mt.py                   # Evaluation for the MT model
 ├── test_supervised.py           # Evaluation for supervised models
-├── test_utils.py                # Shared inference, metrics, and visualization
+├── test_utils.py                # Shared inference, metri cs, and visualization
 ├── val.py                       # Validation utilities (DSC, HD95 per class)
 │
 ├── dataloaders/
@@ -166,6 +166,16 @@ python train_supervised.py \
     --num_classes    5 \
     --cfg            ./configs/swin_tiny_patch4_window7_224_lite.yaml
 ```
+
+---
+
+## Checkpoints & Pre-trained Models
+
+Pre-trained weights and evaluation checkpoints for our models are included in the repository. You can find them under the `model/` folder organized by experiment name:
+* `model/<exp_name>/unet_resnet_best_model.pth` (Mean Teacher & Supervised Baseline)
+* `model/<exp_name>/swinunet_best_model.pth` (SwinUNet Baseline)
+
+You can use these paths directly in the evaluation scripts below without needing to re-train the models.
 
 ---
 
